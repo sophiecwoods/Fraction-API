@@ -135,4 +135,38 @@ public class FractionImpl implements Fraction {
     public String toString() {
         return null;
     }
+
+
+    /**
+     * Returns an integer that is the greatest common divisor of parameters num1 and num2
+     * @param num1 the first number in the computation
+     * @param num2 the second number in the computation
+     * @return the greatest common divisor of num1 and num2
+     */
+    static int greatestCommonDivisor(int num1, int num2){
+        int larger;
+        int smaller;
+        int remainder;
+        // checks whether num1 is greater than num2 and assigns num1 and num2 to larger and smaller accordingly
+        if (Math.abs(num1) > Math.abs(num2)) {
+            larger = Math.abs(num1);
+            smaller = Math.abs(num2);
+        } else {
+            larger = Math.abs(num2);
+            smaller = Math.abs(num1);
+        }
+
+        /* Uses Euclid's algorithm to calculate the greatest common divisor. While larger and smaller do not equal zero,
+           divide the larger number by the smaller number and then assign the smaller number to larger and the remainder
+           to smaller.
+         */
+        if (larger != 0) {
+            while (smaller != 0) {
+                remainder = larger % smaller;
+                larger = smaller;
+                smaller = remainder;
+            }
+        }
+        return larger;
+    }
 }
