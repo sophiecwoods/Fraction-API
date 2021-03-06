@@ -169,4 +169,20 @@ public class FractionImpl implements Fraction {
         }
         return larger;
     }
+
+    /**
+     * Returns an array of two integers where if d is negative the first integer is the normalised numerator and
+     * the second is the normalised denominator, otherwise returns an array of n and d.
+     * @param n the numerator of a fraction
+     * @param d the denominator of a fraction
+     * @return an Array of two integers, the first is the normalised numerator and the second is the normalised
+     * denominator
+     */
+    static int[] normaliseFraction(int n, int d) {
+        if (d < 0) {
+            n = n * -1;
+            d = d * -1;
+        }
+        return new int[]{n, d};
+    }
 }

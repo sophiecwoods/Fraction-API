@@ -17,6 +17,20 @@ public class FractionImplTest {
             assertEquals(result, GCD[i]);
         }
     }
+
+    @Test
+    public void testNormaliseFraction() {
+        int[] numeratorIn = {    0, 1, 5,  6,  8,  125, -20, -33 };
+        int[] denominatorIn = {  1, 2, 1, -1, -4, -489, -50, 100 };
+        int[] numeratorOut = {   0, 1, 5, -6, -8, -125,  20, -33 };
+        int[] denominatorOut = { 1, 2, 1,  1,  4,  489,  50, 100 };
+
+        for (int i = 0; i < numeratorIn.length; i++) {
+            int[] results = FractionImpl.normaliseFraction(numeratorIn[i], denominatorIn[i]);
+            assertEquals(results[0], numeratorOut[i]);
+            assertEquals(results[1], denominatorOut[i]);
+        }
+    }
 }
 
 
