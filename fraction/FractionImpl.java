@@ -17,24 +17,24 @@ public class FractionImpl implements Fraction {
      * @param denominator
      */
     public FractionImpl(int numerator, int denominator) {
-         public FractionImpl(int numerator, int denominator) {
-            if (denominator == 0) {
-                throw new ArithmeticException("Divide by zero");
-            }
-            else if (numerator == 0 ) {
-                this.numerator = 0;
-                this.denominator = 1;
-            } else {
-                int GCD = greatestCommonDivisor(numerator, denominator);
-                this.numerator = numerator/GCD;
-                this.denominator = denominator/GCD;
-                if (this.denominator < 0) {
-                    this.numerator = normaliseFraction(this.numerator, this.denominator)[0];
-                    this.denominator = normaliseFraction(this.numerator, this.denominator)[1];
-                }
-            }
+        if (denominator == 0) {
+            throw new ArithmeticException("Divide by zero");
+        }
+        else if (numerator == 0 ) {
+            this.numerator = 0;
+            this.denominator = 1;
+        } else {
+            // normalises fraction if denominator is negative
+            if (denominator < 0) {
+                numerator = normaliseFraction(numerator, denominator)[0];
+                denominator = normaliseFraction(numerator, denominator)[1];
+            } // sets numerator and denominator to simplest form
+            int GCD = greatestCommonDivisor(numerator, denominator);
+            this.numerator = numerator/GCD;
+            this.denominator = denominator/GCD;
         }
     }
+
 
     /**
      * The parameter is the numerator and <pre>1</pre> is the implicit denominator.
@@ -42,7 +42,8 @@ public class FractionImpl implements Fraction {
      * @param wholeNumber representing the numerator
      */
     public FractionImpl(int wholeNumber) {
-        // TODO
+        numerator = wholeNumber;
+        denominator = 1;
     }
 
     /**
@@ -57,7 +58,36 @@ public class FractionImpl implements Fraction {
      * @param fraction the string representation of the fraction
      */
     public FractionImpl(String fraction) {
-        // TODO
+        // gets index of forward slash in fraction
+        int indexOfSlash = fraction.indexOf("/");
+
+        // if fraction is a whole number, removes whitespace and sets numerator to fraction and denominator to 1
+        if (indexOfSlash == -1) {
+            numerator = Integer.parseInt(fraction.trim());
+            denominator = 1;
+            // otherwise creates two substrings of fraction. n holds non whitespace characters before the forward slash
+            // and d holds characters after.
+            // sets numerator and denominator to integer conversions of n and d
+        } else {
+            String n = fraction.substring(0, indexOfSlash).trim();
+            String d = fraction.substring(indexOfSlash + 1).trim();
+            numerator = Integer.parseInt(n);
+            denominator = Integer.parseInt(d);
+        }
+
+        if (denominator == 0) {
+            throw new ArithmeticException("Divide by zero");
+        }
+        // normalises fraction if denominator is negative
+        if (denominator < 0) {
+            numerator = normaliseFraction(numerator, denominator)[0];
+            denominator = normaliseFraction(numerator, denominator)[1];
+        }
+        // sets numerator and denominator to simplest form
+        int GCD = greatestCommonDivisor(numerator, denominator);
+        numerator = numerator/GCD;
+        denominator = denominator/GCD;
+
     }
 
     /**
@@ -188,10 +218,11 @@ public class FractionImpl implements Fraction {
             }
         }
         return larger;
+
     }
 
     /**
-     * Returns an array of two integers where if d is negative the first integer is the normalised numerator and
+     * Returns an array of two integers where, if d is negative, the first integer is the normalised numerator and
      * the second is the normalised denominator, otherwise returns an array of n and d.
      * @param n the numerator of a fraction
      * @param d the denominator of a fraction
@@ -205,4 +236,5 @@ public class FractionImpl implements Fraction {
         }
         return new int[]{n, d};
     }
+
 }
