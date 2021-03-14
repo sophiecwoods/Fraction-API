@@ -5,6 +5,7 @@ public class FractionImpl implements Fraction {
     private int numerator;
     private int denominator;
 
+
     /**
      * Parameters are the <em>numerator</em> and the <em>denominator</em>.
      * Normalize the fraction as you create it.
@@ -45,6 +46,7 @@ public class FractionImpl implements Fraction {
         numerator = wholeNumber;
         denominator = 1;
     }
+
 
     /**
      * The parameter is a <pre>String</pre> containing either a whole number, such as `5` or `-3`, or a fraction,
@@ -87,15 +89,17 @@ public class FractionImpl implements Fraction {
         int GCD = greatestCommonDivisor(numerator, denominator);
         numerator = numerator/GCD;
         denominator = denominator/GCD;
-
     }
+
 
     /**
      * @inheritDoc
      */
     @Override
     public Fraction add(Fraction f) {
-        return null;
+
+
+
     }
 
     /**
@@ -151,7 +155,13 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        // checks that obj is a Fraction
+        if (! (obj instanceof Fraction)) {
+            return false;
+          // creates a FractionImpl instance of obj, f, and checks that the numerator and denominator of f equal the
+            // numerator and denominator of the fraction the method is called on
+        } FractionImpl f = (FractionImpl) obj;
+          return (f.numerator == (this.numerator) && (f.denominator == this.denominator));
     }
 
     /**
@@ -178,12 +188,13 @@ public class FractionImpl implements Fraction {
         return 0;
     }
 
+
     /**
      * @inheritDoc
      */
     @Override
     public String toString() {
-        return null;
+        return String.format("%d/%d", numerator, denominator);
     }
 
 
@@ -205,7 +216,6 @@ public class FractionImpl implements Fraction {
             larger = Math.abs(num2);
             smaller = Math.abs(num1);
         }
-
         /* Uses Euclid's algorithm to calculate the greatest common divisor. While larger and smaller do not equal zero,
            divide the larger number by the smaller number and then assign the smaller number to larger and the remainder
            to smaller.
@@ -218,7 +228,6 @@ public class FractionImpl implements Fraction {
             }
         }
         return larger;
-
     }
 
     /**
@@ -230,11 +239,12 @@ public class FractionImpl implements Fraction {
      * denominator
      */
     static int[] normaliseFraction(int n, int d) {
+        // if denominator is negative, multiplies the numerator and denominator by -1 to normalise the Fraction
         if (d < 0) {
             n = n * -1;
             d = d * -1;
         }
+        // returns a new array of the resulting numerator and denominator
         return new int[]{n, d};
     }
-
 }
