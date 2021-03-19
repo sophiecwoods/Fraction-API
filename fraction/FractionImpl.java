@@ -97,9 +97,14 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction add(Fraction f) {
-
-
-
+        // casts Fraction f to FractionImpl to access numerator and denominator
+        int fNumerator = ((FractionImpl) f).numerator;
+        int fDenominator = ((FractionImpl) f).denominator;
+        // calculates the resulting numerator and denominator, when f is added to the Fraction the method is called on
+        int resultN = (this.numerator * fDenominator) + (this.denominator * fNumerator);
+        int resultD = this.denominator * fDenominator;
+        // returns a new Fraction which is the result of the addition
+        return new FractionImpl(resultN, resultD);
     }
 
     /**
@@ -247,4 +252,5 @@ public class FractionImpl implements Fraction {
         // returns a new array of the resulting numerator and denominator
         return new int[]{n, d};
     }
+
 }
