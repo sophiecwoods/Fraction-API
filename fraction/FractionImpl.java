@@ -100,9 +100,11 @@ public class FractionImpl implements Fraction {
         // casts Fraction f to FractionImpl to access numerator and denominator
         int fNumerator = ((FractionImpl) f).numerator;
         int fDenominator = ((FractionImpl) f).denominator;
-        // calculates the resulting numerator and denominator, when f is added to the Fraction the method is called on
+
+        // calculates the resulting numerator and denominator, when f is added to this Fraction
         int resultN = (this.numerator * fDenominator) + (this.denominator * fNumerator);
         int resultD = this.denominator * fDenominator;
+
         // returns a new Fraction which is the result of the addition
         return new FractionImpl(resultN, resultD);
     }
@@ -112,7 +114,15 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction subtract(Fraction f) {
-        return null;
+        // casts Fraction f to FractionImpl to access numerator and denominator
+        int fNumerator = ((FractionImpl) f).numerator;
+        int fDenominator = ((FractionImpl) f).denominator;
+
+        // calculates the resulting numerator and denominator, when f is subtracted from this Fraction
+        int resultN = (this.numerator * fDenominator) - (this.denominator * fNumerator);
+        int resultD = this.denominator * fDenominator;
+
+        return new FractionImpl(resultN, resultD);
     }
 
     /**
