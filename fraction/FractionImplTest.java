@@ -73,6 +73,27 @@ public class FractionImplTest {
             assertEquals(f1.subtract(f2), r);
         }
     }
+
+
+    @Test
+    public void testMultiply() {
+        int[] firstNumerator = {    1,  3,   -46,    -932_451,   5,       0, 19,  6_000, 12_468,     1_373_219 };
+        int[] firstDenominator = {  2, 30,   150,   1_234_567,   1,       1,  1,  9_000, 55_555, 2_110_492_865 };
+
+        int[] secondNumerator = {   1, -5,   -27,         380,   6,  71_465,  1, -6_000,   200,          1_000 };
+        int[] secondDenominator = { 4, 12,    88,         500,   9, 237_557, 19, 12_000,   400,              1 };
+
+        int[] resultNumerator = {   1, -1,  1_242, -35_433_138, 10,       0,   1,   -36,   6234, 1_373_219_000 };
+        int[] resultDenominator = { 8, 24, 13_200, 61_728_350,   3,       1,   1,   108, 55_555, 2_110_492_865 };
+
+
+        for (int i = 0; i < firstNumerator.length; i++) {
+            Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
+            Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
+            Fraction r = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(f1.multiply(f2), r);
+        }
+    }
 }
 
 

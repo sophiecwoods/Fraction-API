@@ -109,6 +109,7 @@ public class FractionImpl implements Fraction {
         return new FractionImpl(resultN, resultD);
     }
 
+
     /**
      * @inheritDoc
      */
@@ -125,12 +126,21 @@ public class FractionImpl implements Fraction {
         return new FractionImpl(resultN, resultD);
     }
 
+
     /**
      * @inheritDoc
      */
     @Override
     public Fraction multiply(Fraction f) {
-        return null;
+        // casts Fraction f to FractionImpl to access numerator and denominator
+        int fNumerator = ((FractionImpl) f).numerator;
+        int fDenominator = ((FractionImpl) f).denominator;
+
+        // calculates the resulting numerator and denominator, when this Fraction is multiplied by f
+        int resultN = this.numerator * fNumerator;
+        int resultD = this.denominator * fDenominator;
+
+        return new FractionImpl(resultN, resultD);
     }
 
     /**
