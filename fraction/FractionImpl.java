@@ -109,8 +109,8 @@ public class FractionImpl implements Fraction {
         int fDenominator = ((FractionImpl) f).denominator;
 
         // calculates the resulting numerator and denominator, when f is added to this Fraction
-        int resultN = (this.numerator * fDenominator) + (this.denominator * fNumerator);
-        int resultD = this.denominator * fDenominator;
+        int resultN = (numerator * fDenominator) + (denominator * fNumerator);
+        int resultD = denominator * fDenominator;
 
         // returns a new Fraction which is the result of the addition
         return new FractionImpl(resultN, resultD);
@@ -127,8 +127,8 @@ public class FractionImpl implements Fraction {
         int fDenominator = ((FractionImpl) f).denominator;
 
         // calculates the resulting numerator and denominator, when f is subtracted from this Fraction
-        int resultN = (this.numerator * fDenominator) - (this.denominator * fNumerator);
-        int resultD = this.denominator * fDenominator;
+        int resultN = (numerator * fDenominator) - (denominator * fNumerator);
+        int resultD = denominator * fDenominator;
 
         return new FractionImpl(resultN, resultD);
     }
@@ -144,8 +144,8 @@ public class FractionImpl implements Fraction {
         int fDenominator = ((FractionImpl) f).denominator;
 
         // calculates the resulting numerator and denominator, when this Fraction is multiplied by f
-        int resultN = this.numerator * fNumerator;
-        int resultD = this.denominator * fDenominator;
+        int resultN = numerator * fNumerator;
+        int resultD = denominator * fDenominator;
 
         return new FractionImpl(resultN, resultD);
     }
@@ -161,8 +161,8 @@ public class FractionImpl implements Fraction {
         int fDenominator = ((FractionImpl) f).denominator;
 
         // calculates the resulting numerator and denominator, when this Fraction is divded by f
-        int resultN = this.numerator * fDenominator;
-        int resultD = this.denominator * fNumerator;
+        int resultN = numerator * fDenominator;
+        int resultD = denominator * fNumerator;
 
         return new FractionImpl(resultN, resultD);
     }
@@ -202,8 +202,9 @@ public class FractionImpl implements Fraction {
           // creates a FractionImpl instance of obj, f, and checks that the numerator and denominator of f equal the
             // numerator and denominator of the fraction the method is called on
         } FractionImpl f = (FractionImpl) obj;
-          return (f.numerator == (this.numerator) && (f.denominator == this.denominator));
+          return (f.numerator == numerator && f.denominator == denominator);
     }
+
 
     /**
      * @inheritDoc

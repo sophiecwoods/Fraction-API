@@ -11,12 +11,12 @@ public class FractionImplTest {
         int[] nums1 = {       1,  4, 7, -12, -300,    708,  -200_000, 0, 64_389, -1_000_000 };
         int[] nums2 = {       6, 30, 1, -13,  500, -4_513, 7_000_000, 1,    123,  9_999_999 };
 
-        int[] numerator = {   1,  2, 7,  12,   -3,   -708,        -1, 0, 64_389, -1_000_000 };
-        int[] denominator = { 6, 15, 1,  13,    5,  4_513,        35, 1,    123,  9_999_999 };
+        int[] numerators = {   1,  2, 7,  12,   -3,   -708,        -1, 0, 64_389, -1_000_000 };
+        int[] denominators = { 6, 15, 1,  13,    5,  4_513,        35, 1,    123,  9_999_999 };
 
         for (int i = 0; i < nums1.length; i++) {
             Fraction input = new FractionImpl(nums1[i], nums2[i]);
-            Fraction result = new FractionImpl(numerator[i], denominator[i]);
+            Fraction result = new FractionImpl(numerators[i], denominators[i]);
             assertEquals(input, result);
         }
     }
@@ -31,13 +31,13 @@ public class FractionImplTest {
     @Test
     public void testWholeNumberConstructor() {
 
-        int[] wholeNum = {    3, 65, 27_604, 123_456_789, 2_147_483_647, -50, -71_452, -2_147_483_647, 0, 1 };
-        int[] numerator = {   3, 65, 27_604, 123_456_789, 2_147_483_647, -50, -71_452, -2_147_483_647, 0, 1 };
-        int[] denominator = { 1,  1,      1,           1,             1,   1,       1,              1, 1, 1 };
+        int[] wholeNums = {    3, 65, 27_604, 123_456_789, 2_147_483_647, -50, -71_452, -2_147_483_647, 0, 1 };
+        int[] numerators = {   3, 65, 27_604, 123_456_789, 2_147_483_647, -50, -71_452, -2_147_483_647, 0, 1 };
+        int[] denominators = { 1,  1,      1,           1,             1,   1,       1,              1, 1, 1 };
 
-        for (int i = 0; i < wholeNum.length; i++) {
-            Fraction input = new FractionImpl(wholeNum[i]);
-            Fraction result = new FractionImpl(numerator[i], denominator[i]);
+        for (int i = 0; i < wholeNums.length; i++) {
+            Fraction input = new FractionImpl(wholeNums[i]);
+            Fraction result = new FractionImpl(numerators[i], denominators[i]);
             assertEquals(input, result);
         }
     }
@@ -46,16 +46,15 @@ public class FractionImplTest {
     @Test
     public void testStringConstructor() {
 
-        String[] str =    {  "1", "-8", "-36490", "9356771", "0", "22/45", "30 / 90", "-100 /650", "-2/ -17", "5/1" };
-        int[] numerator = {   1,   -8,  -36_490,  9_356_771,  0,      22,         1,         -10,         2,     5 };
-        int[] denominator = { 1,    1,        1,          1,  1,      45,         3,          65,        17,     1 };
+        String[] strings = {  "1", "-8", "-36490", "9356771", "0", "22/45", "30 / 90", "-100 /650", "-2/ -17", "5/1" };
+        int[] numerators = {   1,   -8,  -36_490,  9_356_771,  0,      22,         1,         -10,         2,     5 };
+        int[] denominators = { 1,    1,        1,          1,  1,      45,         3,          65,        17,     1 };
 
-        for (int i = 0; i < str.length; i++) {
-            Fraction input = new FractionImpl(str[i]);
-            Fraction result = new FractionImpl(numerator[i], denominator[i]);
+        for (int i = 0; i < strings.length; i++) {
+            Fraction input = new FractionImpl(strings[i]);
+            Fraction result = new FractionImpl(numerators[i], denominators[i]);
             assertEquals(input, result);
         }
-
     }
 
 
@@ -125,7 +124,6 @@ public class FractionImplTest {
         int[] resultNumerator = {   0, 3,  9, -1,  19,    -39, 770,    391_884, 17,     -1 };
         int[] resultDenominator = { 1, 4, 5,  7,   60,     40, 778, 86_409_562,  2,      1 };
 
-
         for (int i = 0; i < firstNumerator.length; i++) {
             Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
             Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
@@ -145,7 +143,6 @@ public class FractionImplTest {
 
         int[] resultNumerator = {   1, -1,  1_242, -35_433_138, 10,       0,   1,   -36,   6234, 1_373_219_000 };
         int[] resultDenominator = { 8, 24, 13_200, 61_728_350,   3,       1,   1,   108, 55_555, 2_110_492_865 };
-
 
         for (int i = 0; i < firstNumerator.length; i++) {
             Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
@@ -167,7 +164,6 @@ public class FractionImplTest {
         int[] resultNumerator = {   1, 160, -580, 8_000,  108, 6_884,        -1, 297,       10,  3_441 };
         int[] resultDenominator = { 1, 273,  441,     1,   25,     1, 5_000_000, 200,        1,  4_100 };
 
-
         for (int i = 0; i < firstNumerator.length; i++) {
             Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
             Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
@@ -175,6 +171,39 @@ public class FractionImplTest {
             assertEquals(f1.divide(f2), result);
         }
     }
+
+
+    @Test
+    public void testEquals() {
+        int[] firstNumerator = {    1,  1,  -12, 50, -2, -7_846, -350_630_490,  2_478_222, 40,   900 };
+        int[] firstDenominator = {  2,  3,  120,  1,  5, 30_000,            1,          1, 50, 1_000 };
+
+        int[] secondNumerator =   { 1,  2,   -1, 50,  2, -7_845, -350_630_490,  2_478_222, 41,    90 };
+        int[] secondDenominator = { 2,  6,   10,  1,  5, 30_000,            2, 10_000_000, 51, 1_000 };
+
+        boolean[] results =       {true, true, true, true, false, false, false, false, false, false};
+
+        for (int i = 0; i < firstNumerator.length; i++) {
+            Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
+            Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
+            assertEquals(f1.equals(f2), results[i]);
+        }
+    }
+
+
+    @Test
+    public void testToString() {
+        int[] numerators = {    4, 62, -1_654, 395, 600_000,         27, -87_145, 0, 16 };
+        int[] denominators = { 19, 63, 57_821,  11, 932_653, 28_000_000,       1, 1,  1 };
+        String[] results =  {"4/19", "62/63", "-1654/57821", "395/11", "600000/932653", "27/28000000",
+                                "-87145/1", "0/1", "16/1"};
+
+        for (int i = 0; i < numerators.length; i++) {
+            Fraction f = new FractionImpl(numerators[i], denominators[i]);
+            assertEquals(f.toString(), results[i]);
+        }
+    }
 }
+
 
 
