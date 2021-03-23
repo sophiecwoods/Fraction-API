@@ -150,16 +150,12 @@ public class FractionImpl implements Fraction {
         return new FractionImpl(resultN, resultD);
     }
 
+
     /**
      * @inheritDoc
      */
     @Override
     public Fraction divide(Fraction f) {
-       /*
-       Returns a new Fraction that is the quotient of dividing this by f:
-       (a/b) / (c/d) is (a*d)/(b*c)
-        */
-
         // casts Fraction f to FractionImpl to access numerator and denominator
         int fNumerator = ((FractionImpl) f).numerator;
         int fDenominator = ((FractionImpl) f).denominator;
@@ -169,7 +165,6 @@ public class FractionImpl implements Fraction {
         int resultD = this.denominator * fNumerator;
 
         return new FractionImpl(resultN, resultD);
-
     }
 
     /**
