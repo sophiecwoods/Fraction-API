@@ -155,7 +155,21 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction divide(Fraction f) {
-        return null;
+       /*
+       Returns a new Fraction that is the quotient of dividing this by f:
+       (a/b) / (c/d) is (a*d)/(b*c)
+        */
+
+        // casts Fraction f to FractionImpl to access numerator and denominator
+        int fNumerator = ((FractionImpl) f).numerator;
+        int fDenominator = ((FractionImpl) f).denominator;
+
+        // calculates the resulting numerator and denominator, when this Fraction is divded by f
+        int resultN = this.numerator * fDenominator;
+        int resultD = this.denominator * fNumerator;
+
+        return new FractionImpl(resultN, resultD);
+
     }
 
     /**

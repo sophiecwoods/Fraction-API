@@ -18,7 +18,6 @@ public class FractionImplTest {
             Fraction input = new FractionImpl(nums1[i], nums2[i]);
             Fraction result = new FractionImpl(numerator[i], denominator[i]);
             assertEquals(input, result);
-
         }
     }
 
@@ -109,8 +108,8 @@ public class FractionImplTest {
         for (int i = 0; i < firstNumerator.length; i++) {
             Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
             Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
-            Fraction r = new FractionImpl(resultNumerator[i], resultDenominator[i]);
-            assertEquals(f1.add(f2), r);
+            Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(f1.add(f2), result);
         }
     }
 
@@ -130,8 +129,8 @@ public class FractionImplTest {
         for (int i = 0; i < firstNumerator.length; i++) {
             Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
             Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
-            Fraction r = new FractionImpl(resultNumerator[i], resultDenominator[i]);
-            assertEquals(f1.subtract(f2), r);
+            Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(f1.subtract(f2), result);
         }
     }
 
@@ -151,8 +150,29 @@ public class FractionImplTest {
         for (int i = 0; i < firstNumerator.length; i++) {
             Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
             Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
-            Fraction r = new FractionImpl(resultNumerator[i], resultDenominator[i]);
-            assertEquals(f1.multiply(f2), r);
+            Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(f1.multiply(f2), result);
+        }
+    }
+
+
+    @Test
+    public void testDivide() {
+        int[] firstNumerator = {    1,  20, -145,  800,    9, 3_442,         -5,  99,  -12_000,    -62 };
+        int[] firstDenominator = {  2,  39,  147,    1,    5,     1,         25, 100,   16_000,    100 };
+
+        int[] secondNumerator = {   1,   7,    3,    1,   250,    1,  1_000_000,   2,       -3,   -574 };
+        int[] secondDenominator = { 2,   8,    4,   10,   600,    2,          1,   3,       40,    777 };
+
+        int[] resultNumerator = {   1, 160, -580, 8_000,  108, 6_884,        -1, 297,       10,  3_441 };
+        int[] resultDenominator = { 1, 273,  441,     1,   25,     1, 5_000_000, 200,        1,  4_100 };
+
+
+        for (int i = 0; i < firstNumerator.length; i++) {
+            Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
+            Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
+            Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(f1.divide(f2), result);
         }
     }
 }
