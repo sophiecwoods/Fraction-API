@@ -60,6 +60,13 @@ public class FractionImpl implements Fraction {
      * @param fraction the string representation of the fraction
      */
     public FractionImpl(String fraction) {
+        // checks String is legal, otherwise throws a NumberFormatException
+        String fractionChars = " /-0123456789";
+        for (char c : fraction.toCharArray()) {
+            if (! fractionChars.contains("" + c)) {
+                throw new NumberFormatException("Non numeric input");
+            }
+        }
         // gets index of forward slash in fraction
         int indexOfSlash = fraction.indexOf("/");
 
@@ -68,8 +75,8 @@ public class FractionImpl implements Fraction {
             numerator = Integer.parseInt(fraction.trim());
             denominator = 1;
             // otherwise creates two substrings of fraction. n holds non whitespace characters before the forward slash
-            // and d holds characters after.
-            // sets numerator and denominator to integer conversions of n and d
+            // and d holds characters after the forward slash.
+            // sets numerator and denominator to integer conversions of n and d.
         } else {
             String n = fraction.substring(0, indexOfSlash).trim();
             String d = fraction.substring(indexOfSlash + 1).trim();
@@ -272,5 +279,4 @@ public class FractionImpl implements Fraction {
         // returns a new array of the resulting numerator and denominator
         return new int[]{n, d};
     }
-
 }

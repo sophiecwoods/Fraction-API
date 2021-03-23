@@ -6,6 +6,67 @@ import org.junit.*;
 public class FractionImplTest {
 
     @Test
+    public void testNumeratorDenominatorConstructor() {
+
+        int[] nums1 = {       1,  4, 7, -12, -300,    708,  -200_000, 0, 64_389, -1_000_000 };
+        int[] nums2 = {       6, 30, 1, -13,  500, -4_513, 7_000_000, 1,    123,  9_999_999 };
+
+        int[] numerator = {   1,  2, 7,  12,   -3,   -708,        -1, 0, 64_389, -1_000_000 };
+        int[] denominator = { 6, 15, 1,  13,    5,  4_513,        35, 1,    123,  9_999_999 };
+
+        for (int i = 0; i < nums1.length; i++) {
+            Fraction input = new FractionImpl(nums1[i], nums2[i]);
+            Fraction result = new FractionImpl(numerator[i], denominator[i]);
+            assertEquals(input, result);
+
+        }
+    }
+
+
+    @Test(expected = ArithmeticException.class)
+    public void testZeroDenominator() {
+        Fraction f = new FractionImpl(1, 0);
+    }
+
+
+    @Test
+    public void testWholeNumberConstructor() {
+
+        int[] wholeNum = {    3, 65, 27_604, 123_456_789, 2_147_483_647, -50, -71_452, -2_147_483_647, 0, 1 };
+        int[] numerator = {   3, 65, 27_604, 123_456_789, 2_147_483_647, -50, -71_452, -2_147_483_647, 0, 1 };
+        int[] denominator = { 1,  1,      1,           1,             1,   1,       1,              1, 1, 1 };
+
+        for (int i = 0; i < wholeNum.length; i++) {
+            Fraction input = new FractionImpl(wholeNum[i]);
+            Fraction result = new FractionImpl(numerator[i], denominator[i]);
+            assertEquals(input, result);
+        }
+    }
+
+
+    @Test
+    public void testStringConstructor() {
+
+        String[] str =    {  "1", "-8", "-36490", "9356771", "0", "22/45", "30 / 90", "-100 /650", "-2/ -17", "5/1" };
+        int[] numerator = {   1,   -8,  -36_490,  9_356_771,  0,      22,         1,         -10,         2,     5 };
+        int[] denominator = { 1,    1,        1,          1,  1,      45,         3,          65,        17,     1 };
+
+        for (int i = 0; i < str.length; i++) {
+            Fraction input = new FractionImpl(str[i]);
+            Fraction result = new FractionImpl(numerator[i], denominator[i]);
+            assertEquals(input, result);
+        }
+
+    }
+
+
+    @Test(expected = NumberFormatException.class)
+    public void testIllegalString() {
+        Fraction f = new FractionImpl("a");
+    }
+
+
+    @Test
     public void testGreatestCommonDivisor() {
 
         int[] nums1 = { 1, 1, 3, 4,  5, 124, 13, 0, 0,  -50, 66, 192_000, 1_983_204_571, -2_147_483_646 };
@@ -13,7 +74,7 @@ public class FractionImplTest {
         int[] GCD = {   1, 1, 3, 2,  5,   4,  1, 7, 0,   50,  6,   6_000,             1,              2 };
 
         for (int i = 0; i < nums1.length; i++) {
-            long result = FractionImpl.greatestCommonDivisor(nums1[i], nums2[i]);
+            int result = FractionImpl.greatestCommonDivisor(nums1[i], nums2[i]);
             assertEquals(result, GCD[i]);
         }
     }
