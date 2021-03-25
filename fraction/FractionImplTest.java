@@ -204,6 +204,7 @@ public class FractionImplTest {
         }
     }
 
+
     @Test
     public void testAbs() {
         int[] numerators = {        5, -1,   490, 834_981_202,  -2_111_579_886,    -675, -180, 0 };
@@ -216,6 +217,22 @@ public class FractionImplTest {
             Fraction input = new FractionImpl(numerators[i], denominators[i]);
             Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
             assertEquals(input.abs(), result);
+        }
+    }
+
+
+    @Test
+    public void testNegate() {
+        int[] numerators =        { 5, -1,   490,  834_981_202, -2_111_579_886,    -675, -180, 0 };
+        int[] denominators =      { 6,  3, 6_253,            1,              1,  29_437,   67, 1 };
+
+        int[] resultNumerator = {  -5,  1,  -490, -834_981_202,  2_111_579_886,     675,  180, 0 };
+        int[] resultDenominator = { 6,  3, 6_253,            1,              1,  29_437,   67, 1 };
+
+        for (int i = 0; i < numerators.length; i++) {
+            Fraction input = new FractionImpl(numerators[i], denominators[i]);
+            Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(input.negate(), result);
         }
     }
 }

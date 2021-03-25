@@ -167,6 +167,7 @@ public class FractionImpl implements Fraction {
         return new FractionImpl(resultN, resultD);
     }
 
+
     /**
      * @inheritDoc
      */
@@ -183,7 +184,8 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction negate() {
-        return null;
+        // multiplies numerator by -1 to negate this fraction and returns a new fraction
+        return new FractionImpl(numerator * -1, denominator);
     }
 
     /**
