@@ -8,8 +8,8 @@ public class FractionImplTest {
     @Test
     public void testNumeratorDenominatorConstructor() {
 
-        int[] nums1 = {       1,  4, 7, -12, -300,    708,  -200_000, 0, 64_389, -1_000_000 };
-        int[] nums2 = {       6, 30, 1, -13,  500, -4_513, 7_000_000, 1,    123,  9_999_999 };
+        int[] nums1 = {        1,  4, 7, -12, -300,    708,  -200_000, 0, 64_389, -1_000_000 };
+        int[] nums2 = {        6, 30, 1, -13,  500, -4_513, 7_000_000, 1,    123,  9_999_999 };
 
         int[] numerators = {   1,  2, 7,  12,   -3,   -708,        -1, 0, 64_389, -1_000_000 };
         int[] denominators = { 6, 15, 1,  13,    5,  4_513,        35, 1,    123,  9_999_999 };
@@ -201,6 +201,21 @@ public class FractionImplTest {
         for (int i = 0; i < numerators.length; i++) {
             Fraction f = new FractionImpl(numerators[i], denominators[i]);
             assertEquals(f.toString(), results[i]);
+        }
+    }
+
+    @Test
+    public void testAbs() {
+        int[] numerators = {        5, -1,   490, 834_981_202,  -2_111_579_886,    -675, -180, 0 };
+        int[] denominators = {      6,  3, 6_253,           1,               1,  29_437,   67, 1 };
+
+        int[] resultNumerator = {   5,  1,   490, 834_981_202,   2_111_579_886,     675,  180, 0 };
+        int[] resultDenominator = { 6,  3, 6_253,           1,               1,  29_437,   67, 1 };
+
+        for (int i = 0; i < numerators.length; i++) {
+            Fraction input = new FractionImpl(numerators[i], denominators[i]);
+            Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(input.abs(), result);
         }
     }
 }

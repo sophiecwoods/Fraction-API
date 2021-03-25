@@ -172,8 +172,11 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction abs() {
-        return null;
+        // checks if this numerator is negative and calculates the resulting numerator
+        int resultN = numerator < 0 ? numerator * - 1 : numerator;
+        return new FractionImpl(resultN, denominator);
     }
+
 
     /**
      * @inheritDoc
