@@ -219,13 +219,22 @@ public class FractionImpl implements Fraction {
         return super.clone();
     }
 
+
     /**
      * @inheritDoc
      */
     @Override
     public Fraction inverse() {
-        return null;
+        if (this.numerator == 0) {
+            throw new ArithmeticException("Divide by zero");
+        }
+        // creates a new fraction with this fraction's numerator as its denominator and this fraction's denominator as
+        // its numerator.
+        int returnN = denominator;
+        int returnD = numerator;
+        return new FractionImpl(returnN, returnD);
     }
+
 
     /**
      * @inheritDoc
@@ -277,6 +286,7 @@ public class FractionImpl implements Fraction {
         return larger;
     }
 
+    
     /**
      * Returns an array of two integers where, if d is negative, the first integer is the normalised numerator and
      * the second is the normalised denominator, otherwise returns an array of n and d.

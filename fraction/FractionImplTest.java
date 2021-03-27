@@ -235,6 +235,29 @@ public class FractionImplTest {
             assertEquals(input.negate(), result);
         }
     }
+
+
+    @Test
+    public void testInverse() {
+        int[] numerators =        { 5, -1,   490, 834_981_202, -2_111_579_886,    -675, -180, 30 };
+        int[] denominators =      { 6,  3, 6_253,           1,              1,  29_437,   67,  1 };
+
+        int[] resultNumerator = {   6, -3, 6_253,           1,             -1, -29_437,  -67,  1 };
+        int[] resultDenominator = { 5,  1,   490, 834_981_202,  2_111_579_886,     675,  180, 30 };
+
+        for (int i = 0; i < numerators.length; i++) {
+            Fraction input = new FractionImpl(numerators[i], denominators[i]);
+            Fraction result = new FractionImpl(resultNumerator[i], resultDenominator[i]);
+            assertEquals(input.inverse(), result);
+        }
+    }
+
+
+    @Test(expected = ArithmeticException.class)
+    public void testInverseZero() {
+        Fraction f = new FractionImpl(0, 1);
+        f.inverse();
+    }
 }
 
 
