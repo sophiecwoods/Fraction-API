@@ -258,6 +258,24 @@ public class FractionImplTest {
         Fraction f = new FractionImpl(0, 1);
         f.inverse();
     }
+
+
+    @Test
+    public void testCompareTo() {
+        int[] firstNumerator = {    1,  3,  -12, -2, -7_846, -350_630_490, -2_478_222,     25,  9,     99 };
+        int[] firstDenominator = {  2,  9,  120,  5, 30_000,            1,          1, 3_4421,  1,    100 };
+
+        int[] secondNumerator =   { 1,  1,   -1,  2, -7_845,  -4_379_224,  -2_478_222,      0, 37, 70_000 };
+        int[] secondDenominator = { 2,  3,   10,  5, 30_000,           1,  10_000_000,      1,  6, 80_000 };
+
+        int[] results =          {  0,  0,    0, -1,     -1,          -1,          -1,      1,  1,      1 };
+
+        for (int i = 0; i < firstNumerator.length; i++) {
+            Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
+            Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
+            assertEquals(f1.compareTo(f2), results[i]);
+        }
+    }
 }
 
 

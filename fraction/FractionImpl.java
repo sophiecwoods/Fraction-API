@@ -160,7 +160,7 @@ public class FractionImpl implements Fraction {
         int fNumerator = ((FractionImpl) f).numerator;
         int fDenominator = ((FractionImpl) f).denominator;
 
-        // calculates the resulting numerator and denominator, when this Fraction is divded by f
+        // calculates the resulting numerator and denominator, when this Fraction is divided by f
         int resultN = numerator * fDenominator;
         int resultD = denominator * fNumerator;
 
@@ -173,7 +173,7 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction abs() {
-        // checks if this numerator is negative and calculates the resulting numerator
+        // checks if this numerator is negative and if so multiplies it by -1 to get the absolute value
         int resultN = numerator < 0 ? numerator * - 1 : numerator;
         return new FractionImpl(resultN, denominator);
     }
@@ -188,6 +188,7 @@ public class FractionImpl implements Fraction {
         return new FractionImpl(numerator * -1, denominator);
     }
 
+
     /**
      * @inheritDoc
      */
@@ -195,6 +196,7 @@ public class FractionImpl implements Fraction {
     public int hashCode() {
         return super.hashCode();
     }
+
 
     /**
      * @inheritDoc
@@ -241,7 +243,23 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public int compareTo(Fraction o) {
-        return 0;
+        // casts Fraction f to FractionImpl to access numerator and denominator
+        int oNumerator = ((FractionImpl) o).numerator;
+        int oDenominator = ((FractionImpl) o).denominator;
+
+        int result = 0;
+        // if this Fraction and Fraction o have the same denominator, compares the numerators
+        if (denominator == oDenominator)
+        {
+            if (numerator > oNumerator) result = 1;
+            else if (numerator < oNumerator) result = -1;
+            // otherwise multiplies each numerator by the denominator of the other Fraction to get a common denominator
+            // and then compares the numerators
+        } else {
+            if ((numerator * oDenominator) > (oNumerator * denominator)) result = 1;
+            else if ((numerator * oDenominator) < (oNumerator * denominator)) result = -1;
+        }
+        return result;
     }
 
 
@@ -286,7 +304,7 @@ public class FractionImpl implements Fraction {
         return larger;
     }
 
-    
+
     /**
      * Returns an array of two integers where, if d is negative, the first integer is the normalised numerator and
      * the second is the normalised denominator, otherwise returns an array of n and d.
