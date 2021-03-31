@@ -61,7 +61,9 @@ public class FractionImplTest {
 
     @Test(expected = NumberFormatException.class)
     public void testIllegalString() {
-        Fraction f = new FractionImpl("a");
+        Fraction f1 = new FractionImpl("a");
+        Fraction f2 = new FractionImpl("1 5/20");
+        Fraction f3 = new FractionImpl("2/- 8");
     }
 
 
