@@ -5,6 +5,7 @@ import org.junit.*;
 
 public class FractionImplTest {
 
+
     @Test
     public void testNumeratorDenominatorConstructor() {
 
@@ -174,19 +175,33 @@ public class FractionImplTest {
 
 
     @Test
-    public void testEquals() {
-        int[] firstNumerator = {    1,  1,  -12, 50, -2, -7_846, -350_630_490,  2_478_222, 40,   900 };
-        int[] firstDenominator = {  2,  3,  120,  1,  5, 30_000,            1,          1, 50, 1_000 };
+    public void testEqualsTrue() {
+        int[] firstNumerator = {    1,  1,  -12, 50, 8_000 };
+        int[] firstDenominator = {  2,  3,  120,  1,     2 };
 
-        int[] secondNumerator =   { 1,  2,   -1, 50,  2, -7_845, -350_630_490,  2_478_222, 41,    90 };
-        int[] secondDenominator = { 2,  6,   10,  1,  5, 30_000,            2, 10_000_000, 51, 1_000 };
-
-        boolean[] results =       {true, true, true, true, false, false, false, false, false, false};
+        int[] secondNumerator =   { 1,  2,   -1, 50, 4_000 };
+        int[] secondDenominator = { 2,  6,   10,  1,     1 };
 
         for (int i = 0; i < firstNumerator.length; i++) {
             Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
             Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
-            assertEquals(f1.equals(f2), results[i]);
+            assertTrue(f1.equals(f2));
+        }
+    }
+
+
+    @Test
+    public void testEqualsFalse() {
+        int[] firstNumerator = {    -2, -7_846, -350_630_490,  2_478_222, 40,   900 };
+        int[] firstDenominator = {   5, 30_000,            1,          1, 50, 1_000 };
+
+        int[] secondNumerator =   {  2, -7_845, -350_630_490,  2_478_222, 41,    90 };
+        int[] secondDenominator = {  5, 30_000,            2, 10_000_000, 51, 1_000 };
+
+        for (int i = 0; i < firstNumerator.length; i++) {
+            Fraction f1 = new FractionImpl(firstNumerator[i], firstDenominator[i]);
+            Fraction f2 = new FractionImpl(secondNumerator[i], secondDenominator[i]);
+            assertFalse(f1.equals(f2));
         }
     }
 
