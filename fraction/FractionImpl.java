@@ -7,12 +7,12 @@ public class FractionImpl implements Fraction {
 
 
     /**
+     * Constructor.
      * Parameters are the <em>numerator</em> and the <em>denominator</em>.
-     * Normalize the fraction as you create it.
-     * For instance, if the parameters are <pre>(8, -12)</pre>, create a <pre>Fraction</pre> with numerator
-     * <pre>-2</pre> and denominator <pre>3</pre>.
      *
-     * The constructor should throw an <pre>ArithmeticException</pre> if the denominator is zero.
+     * Normalizes the fraction if the denominator is negative and puts the fraction in its simplest form.
+     *
+     * Throws an <pre>ArithmeticException</pre> if the denominator is zero.
      *
      * @param numerator
      * @param denominator
@@ -38,6 +38,7 @@ public class FractionImpl implements Fraction {
 
 
     /**
+     * Constructor.
      * The parameter is the numerator and <pre>1</pre> is the implicit denominator.
      *
      * @param wholeNumber representing the numerator
@@ -49,13 +50,15 @@ public class FractionImpl implements Fraction {
 
 
     /**
+     * Constructor.
      * The parameter is a <pre>String</pre> containing either a whole number, such as `5` or `-3`, or a fraction,
      * such as "8/-12".
-     * Allow blanks around (but not within) integers.
-     * The constructor should throw an <pre>ArithmeticException</pre>
-     * if given a string representing a fraction whose denominator is zero.
-     * <p>
-     * You may find it helpful to look at the available String API methods in the Java API.
+     *
+     * Normalizes the fraction if the denominator is negative and puts the fraction in its simplest form.
+     *
+     * Allows blanks around (but not within) integers.
+     * Throws an <pre>NumberFormatException</pre> if given a malformed string.
+     * Throws an <pre>ArithmeticException</pre> if given a string representing a fraction whose denominator is zero.
      *
      * @param fraction the string representation of the fraction
      */

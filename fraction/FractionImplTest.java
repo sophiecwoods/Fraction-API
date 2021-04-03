@@ -294,6 +294,3 @@ public class FractionImplTest {
         }
     }
 }
-
-
-
