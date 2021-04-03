@@ -210,7 +210,7 @@ public class FractionImpl implements Fraction {
         if (! (obj instanceof Fraction)) {
             return false;
           // creates a FractionImpl instance of obj, f, and checks that the numerator and denominator of f equal the
-            // numerator and denominator of the fraction the method is called on
+            // numerator and denominator of this fraction
         } FractionImpl f = (FractionImpl) obj;
           return (f.numerator == numerator && f.denominator == denominator);
     }
@@ -234,7 +234,7 @@ public class FractionImpl implements Fraction {
             throw new ArithmeticException("Divide by zero");
         }
         // creates a new fraction with this fraction's numerator as its denominator and this fraction's denominator as
-        // its numerator.
+        // its numerator
         int returnN = denominator;
         int returnD = numerator;
         return new FractionImpl(returnN, returnD);
