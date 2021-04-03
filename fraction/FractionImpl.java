@@ -322,4 +322,34 @@ public class FractionImpl implements Fraction {
         // returns a new array of the resulting numerator and denominator
         return new int[]{n, d};
     }
+
+
+    // short program that uses the API
+    public static void main(String args[]) {
+
+        Fraction f1 = new FractionImpl(2, 4);
+        Fraction f2 = new FractionImpl(3);
+        Fraction f3 = new FractionImpl("-16/50");
+        Fraction f4 = new FractionImpl(1, 999);
+        Fraction f5 = new FractionImpl(-30_000);
+        Fraction f6 = new FractionImpl("5 / -25");
+        Fraction f7 =  new FractionImpl(7, 8);
+        Fraction f8 = new FractionImpl("3 /4");
+        Fraction f9 = new FractionImpl(75, 100);
+
+        System.out.println("2/4 plus 3 is: " + f1.add(f2));
+        System.out.println("1/999 minus -16/50 is: " + f4.subtract(f3));
+        System.out.println("-16/50 multiplied by 2/4 is: " + f3.multiply(f1));
+        System.out.println("3 divided by -30_000 is: " + f2.divide(f5));
+        System.out.println("-16/50 in its simplest form is: " + f3 + ". The absolute value is: " + f3.abs());
+        System.out.println("1/999 negated is: " + f4.negate());
+        System.out.println("The inverse of 7/8 is " + f7.inverse());
+        System.out.println("3/4 equals 75/100? " + f8.equals(f9));
+        System.out.println("5/-25 normalised and in its simplest form is " + f6);
+
+        int comparison = f4.compareTo(f1);
+        if (comparison > 0) System.out.println(f4 + " is bigger than " + f1);
+        else if (comparison < 0) System.out.println(f4 + " is smaller than " + f1);
+        else System.out.println(f4 + "is equal to " + f1);
+    }
 }
