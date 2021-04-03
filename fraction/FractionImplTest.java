@@ -6,6 +6,9 @@ import org.junit.*;
 public class FractionImplTest {
 
 
+    /*
+     * Creates valid instances of Fraction using numerator denominator constructor
+     */
     @Test
     public void testNumeratorDenominatorConstructor() {
 
@@ -23,12 +26,18 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates invalid instance of Fraction, with zero as the denominator, using numerator denominator constructor
+     */
     @Test(expected = ArithmeticException.class)
     public void testZeroDenominator() {
         Fraction f = new FractionImpl(1, 0);
     }
 
 
+    /*
+     * Creates valid instances of Fraction using whole number constructor
+     */
     @Test
     public void testWholeNumberConstructor() {
 
@@ -44,6 +53,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates valid instances of Fraction using String constructor
+     */
     @Test
     public void testStringConstructor() {
 
@@ -59,6 +71,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates invalid instance of Fraction, with malformed Strings, using String constructor
+     */
     @Test(expected = NumberFormatException.class)
     public void testIllegalString() {
         Fraction f1 = new FractionImpl("a");
@@ -67,6 +82,10 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Tests GreatestCommonDivisor method on an array of numbers. GreatestCommonDivisor method is static as it can be
+     * used without an instance of Fraction.
+     */
     @Test
     public void testGreatestCommonDivisor() {
 
@@ -80,6 +99,11 @@ public class FractionImplTest {
         }
     }
 
+
+    /*
+     * Tests NormaliseFraction method on an array of numbers. NormaliseFraction method is static as it can be
+     * used without an instance of Fraction.
+     */
     @Test
     public void testNormaliseFraction() {
         int[] numeratorIn = {    0, 1, 5,  6,  8,  125, -20, -33,   -999_999_999,      1_000_000, -832_457_592 };
@@ -96,6 +120,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests add method on them
+     */
     @Test
     public void testAdd() {
         int[] firstNumerator = {    1, 1,  2,    50,  3,   300, 20,    6,        29_456,    998 };
@@ -116,6 +143,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests subtract method on them
+     */
     @Test
     public void testSubtract() {
         int[] firstNumerator = {    1, 1,  2,  5,  -8,    25, 777,    391_884,  9,  20_000 };
@@ -136,6 +166,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests multiply method on them
+     */
     @Test
     public void testMultiply() {
         int[] firstNumerator = {    1,  3,   -46,    -932_451,   5,       0, 19,  6_000, 12_468,     1_373_219 };
@@ -156,6 +189,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests divide method on them
+     */
     @Test
     public void testDivide() {
         int[] firstNumerator = {    1,  20, -145,  800,    9, 3_442,         -5,  99,  -12_000,    -62 };
@@ -176,6 +212,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction that are equal and test equals method on them
+     */
     @Test
     public void testEqualsTrue() {
         int[] firstNumerator = {    1,  1,  -12, 50, 8_000 };
@@ -192,6 +231,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction that are not equal and test equals method on them
+     */
     @Test
     public void testEqualsFalse() {
         int[] firstNumerator = {    -2, -7_846, -350_630_490,  2_478_222, 40,   900 };
@@ -208,6 +250,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests toString method on them
+     */
     @Test
     public void testToString() {
         int[] numerators = {    4, 62, -1_654, 395, 600_000,         27, -87_145, 0, 16 };
@@ -222,6 +267,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests abs method on them
+     */
     @Test
     public void testAbs() {
         int[] numerators = {        5, -1,   490, 834_981_202,  -2_111_579_886,    -675, -180, 0 };
@@ -238,6 +286,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests negate method on them
+     */
     @Test
     public void testNegate() {
         int[] numerators =        { 5, -1,   490,  834_981_202, -2_111_579_886,    -675, -180, 0 };
@@ -254,6 +305,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests inverse method on them
+     */
     @Test
     public void testInverse() {
         int[] numerators =        { 5, -1,   490, 834_981_202, -2_111_579_886,    -675, -180, 30 };
@@ -270,6 +324,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instance of Fraction with zero as the numerator and tests that calling inverse method throws an exception
+     */
     @Test(expected = ArithmeticException.class)
     public void testInverseZero() {
         Fraction f = new FractionImpl(0, 1);
@@ -277,6 +334,9 @@ public class FractionImplTest {
     }
 
 
+    /*
+     * Creates instances of Fraction and tests compareTo method on them
+     */
     @Test
     public void testCompareTo() {
         int[] firstNumerator = {    1,  3,  -12, -2, -7_846, -350_630_490, -2_478_222,     25,  9,     99 };
