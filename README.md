@@ -1,3 +1,3 @@
 # pop2-project-2020-21-fraction
 
-The project description will be placed on the module webpage.
+Coursework project to build a Fraction API for the module Principles of Programming II as part of the MSc Computer Science at Birkbeck College, University of London.
